@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pyramid_otlp"
+version = "0.1.0"
+description = ""
+authors = ["Yannick Linke <invisi@0x0f.net>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+opentelemetry-instrumentation-pyramid = "==0.32b0"
+pyramid = "^2.0"
+opentelemetry-api =  { version = "1.12.0rc2", allow-prereleases = true }
+opentelemetry-sdk = { version = "1.12.0rc2", allow-prereleases = true }
+opentelemetry-exporter-jaeger-thrift = "^1.11.1"
+opentelemetry-instrumentation-logging = "^0.32b0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

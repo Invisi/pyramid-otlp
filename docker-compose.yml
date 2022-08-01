@@ -1,0 +1,31 @@
+version: "3"
+
+services:
+  grafana:
+    image: grafana/grafana
+    depends_on:
+      - loki
+      - tempo
+    ports:
+      - "127.0.0.1:53000:3000"
+    volumes:
+      - grafana:/var/lib/grafana
+
+  loki:
+    image: grafana/loki
+    command: -config.file=/etc/loki.yml
+    ports:
+      - "127.0.0.1:53100:3100"
+    volumes:
+      - ./grafana/loki.yml:/etc/loki.yml
+
+  tempo:
+    image: grafana/tempo
+    command: -config.file=/etc/tempo.yml
+    ports:
+      - "127.0.0.1:14268:14268"
+    volumes:
+     - ./grafana/tempo.yml:/etc/tempo.yml
+
+volumes:
+  grafana:
